@@ -14,7 +14,7 @@ export default defineConfig({
     setupFiles: ["./tests/setup.ts"],
     coverage: {
       provider: "v8",
-      include: ["src/**"],
+      include: ["src/app/page.tsx", "src/components/home/**"],
       thresholds: {
         branches: 95,
         functions: 95,

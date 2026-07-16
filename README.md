@@ -53,11 +53,13 @@ ai-solid-portfolio/
 - `pnpm` only.
 - Strict TypeScript is mandatory.
 - Apply SOLID, DRY, and KISS deliberately.
+- No login/authentication. This project does not have or reserve auth boundaries.
 - TDD is mandatory.
 - Tests live in separate `tests/` folders per module.
-- Every meaningful module must support unit and integration coverage.
+- Every meaningful module must support unit and integration coverage, minimum 95%.
+- `apps/backend` and `packages/dataaccess` must not use mocks; `apps/frontend` may mock only backend endpoints not yet implemented.
 - No issue is considered done based only on mocks.
-- Shared contracts must live in `packages/dataaccess`.
+- Shared contracts must live in `packages/dataaccess`. The frontend never accesses it directly (except importing Zod schemas for client-side validation) — all data flows through `apps/backend`.
 
 ## Script Placeholders
 

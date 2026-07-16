@@ -30,7 +30,7 @@ The owner needs a focused public presence that does more than list projects. The
 ## Non-Goals
 
 - Full CMS in MVP.
-- Public authentication flows in MVP.
+- Authentication or login flows. This site does not require them, now or in the future.
 - Complex project management backoffice in MVP.
 - Multi-language content in MVP unless explicitly prioritized later.
 
@@ -76,10 +76,6 @@ Need a simple and visually coherent explanation of what the owner builds.
 - `POST /contact`
 - `GET /health`
 
-### Planned Future Boundaries
-
-- Authentication boundary reserved for future protected administration or content workflows.
-
 ## Functional Requirements
 
 ### Home
@@ -116,7 +112,8 @@ Need a simple and visually coherent explanation of what the owner builds.
 
 - Shared contracts must live in `packages/dataaccess`.
 - Zod is the source of truth for shared validation and payload boundaries.
-- Projects are initially read from a versioned repository file.
+- Projects are initially read from a versioned repository file, read only through `packages/dataaccess` and served by `apps/backend`.
+- The frontend never accesses `packages/dataaccess` or the repository file directly; it consumes data exclusively through `apps/backend` APIs. Importing shared Zod schemas for client-side form validation is the only allowed exception.
 - Contact submission data must have explicit validation and anti-abuse checks.
 
 ## Quality Requirements
@@ -133,7 +130,9 @@ Need a simple and visually coherent explanation of what the owner builds.
 - TDD is mandatory.
 - Tests must live in separate `tests/` folders per module.
 - Unit and integration tests are both required.
-- Coverage reporting is required.
+- Minimum coverage: 95%.
+- `apps/backend` and `packages/dataaccess` must not use mocks; integration tests run against real dependencies.
+- `apps/frontend` may mock only backend endpoints not yet implemented, and must replace them with real integration once available.
 - No issue is done based only on mocked behavior.
 
 ## Success Criteria

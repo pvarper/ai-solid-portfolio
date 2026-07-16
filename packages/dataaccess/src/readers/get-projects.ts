@@ -11,14 +11,18 @@ const PROJECTS_DATA_PATH = path.join(import.meta.dirname, "..", "data", "project
  *
  * Throws if the file cannot be read or if its contents do not match the
  * expected shape.
+ *
+ * @param filePath - Optional override of the data file location, used in
+ * tests to exercise the validation-failure path against a real (but
+ * intentionally invalid) fixture file. Production callers should omit it.
  */
-export async function getProjects(): Promise<Project[]> {
-  const raw = await readFile(PROJECTS_DATA_PATH, "utf-8");
+export async function getProjects(filePath: string = PROJECTS_DATA_PATH): Promise<Project[]> {
+  const raw = await readFile(filePath, "utf-8");
   const parsed: unknown = JSON.parse(raw);
   const result = z.array(ProjectSchema).safeParse(parsed);
 
   if (!result.success) {
-    throw new Error(`Invalid projects data in ${PROJECTS_DATA_PATH}: ${result.error.message}`);
+    throw new Error(`Invalid projects data in ${filePath}: ${result.error.message}`);
   }
 
   return result.data;

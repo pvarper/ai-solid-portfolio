@@ -1,5 +1,9 @@
+import path from "node:path";
 import { ProjectSchema } from "../../src/schemas/project.js";
 import { getProjects } from "../../src/readers/get-projects.js";
+
+const INVALID_FIXTURE_PATH = path.join(import.meta.dirname, "..", "fixtures", "invalid-projects.json");
+const MISSING_FIXTURE_PATH = path.join(import.meta.dirname, "..", "fixtures", "does-not-exist.json");
 
 describe("getProjects", () => {
   it("reads the real projects.json fixture and returns validated projects", async () => {
@@ -29,5 +33,13 @@ describe("getProjects", () => {
     expect(typeof first?.id).toBe("string");
     expect(typeof first?.featured).toBe("boolean");
     expect(Array.isArray(first?.stack)).toBe(true);
+  });
+
+  it("throws a clear error when the file contents fail schema validation", async () => {
+    await expect(getProjects(INVALID_FIXTURE_PATH)).rejects.toThrow(/Invalid projects data/);
+  });
+
+  it("throws when the underlying file does not exist", async () => {
+    await expect(getProjects(MISSING_FIXTURE_PATH)).rejects.toThrow();
   });
 });

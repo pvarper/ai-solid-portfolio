@@ -13,8 +13,8 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "jest",
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').cpSync('src/data','dist/data',{recursive:true})\"",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

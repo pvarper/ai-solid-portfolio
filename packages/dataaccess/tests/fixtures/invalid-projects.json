@@ -1,0 +1,11 @@
+[
+  {
+    "id": "",
+    "slug": "Not Kebab Case",
+    "title": "Broken Project",
+    "description": "This fixture is intentionally invalid to test schema validation failure.",
+    "stack": [],
+    "featured": "not-a-boolean",
+    "createdAt": "not-a-date"
+  }
+]

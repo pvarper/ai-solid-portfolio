@@ -1,0 +1,44 @@
+[
+  {
+    "id": "proj-001",
+    "slug": "ai-solid-portfolio",
+    "title": "AI Solid Portfolio",
+    "description": "A portfolio site built with Next.js and NestJS, following SOLID and hexagonal architecture principles.",
+    "stack": ["TypeScript", "Next.js", "NestJS", "Zod"],
+    "repoUrl": "https://github.com/pvarper/ai-solid-portfolio",
+    "demoUrl": "https://ai-solid-portfolio.example.com",
+    "featured": true,
+    "createdAt": "2026-01-10T00:00:00.000Z"
+  },
+  {
+    "id": "proj-002",
+    "slug": "task-tracker-cli",
+    "title": "Task Tracker CLI",
+    "description": "A command-line task tracker with local persistence and a clean architecture core.",
+    "stack": ["TypeScript", "Node.js", "Commander"],
+    "repoUrl": "https://github.com/pvarper/task-tracker-cli",
+    "featured": false,
+    "createdAt": "2025-11-02T00:00:00.000Z"
+  },
+  {
+    "id": "proj-003",
+    "slug": "recipe-finder",
+    "title": "Recipe Finder",
+    "description": "A recipe search app that aggregates public recipe APIs behind a unified interface.",
+    "stack": ["React", "TypeScript", "Tailwind CSS"],
+    "demoUrl": "https://recipe-finder.example.com",
+    "featured": false,
+    "createdAt": "2025-08-20T00:00:00.000Z"
+  },
+  {
+    "id": "proj-004",
+    "slug": "weather-dashboard",
+    "title": "Weather Dashboard",
+    "description": "A real-time weather dashboard with historical trend charts and location search.",
+    "stack": ["Vue", "TypeScript", "Chart.js"],
+    "repoUrl": "https://github.com/pvarper/weather-dashboard",
+    "demoUrl": "https://weather-dashboard.example.com",
+    "featured": true,
+    "createdAt": "2025-05-14T00:00:00.000Z"
+  }
+]

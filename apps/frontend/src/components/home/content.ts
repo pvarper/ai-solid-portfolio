@@ -40,5 +40,5 @@ export const PROOF_POINTS: readonly ProofPoint[] = [
 
 export const CTA = {
   href: "/contact",
-  label: "Get in touch",
+  label: "Contact me",
 } as const;

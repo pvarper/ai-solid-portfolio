@@ -29,7 +29,9 @@ docs/            # Product and project documentation
 - Treat `packages/dataaccess` as the home for shared contracts and shared validation logic.
 - Keep REST contracts explicit and validated with Zod at the shared boundary.
 - Do not leak frontend concerns into backend modules or backend concerns into frontend modules.
-- Keep future authentication boundaries isolated even if auth is not implemented yet.
+- This project has no login/authentication. Do not reserve or scaffold auth boundaries.
+- `apps/frontend` must never access `packages/dataaccess` directly and must not contain data-access or business logic. All data flows through `apps/backend` APIs.
+- Exception: `apps/frontend` may import shared Zod schemas from `packages/dataaccess` for client-side form validation only — a pure type/contract import, not data access.
 
 ## Coding Rules
 
@@ -44,7 +46,9 @@ docs/            # Product and project documentation
 - TDD is mandatory.
 - Place tests in a separate `tests/` directory per module.
 - Write both unit and integration tests.
-- Maintain coverage for meaningful paths, not only happy paths.
+- Minimum test coverage: 95% for every module.
+- `apps/backend` and `packages/dataaccess` must not use mocks; integration tests must run against real dependencies.
+- `apps/frontend` may use mocks only to stand in for backend endpoints not yet implemented, and must replace them with real integration once the corresponding backend endpoint exists.
 - Verify behavior against real integrations or realistic boundaries before closing an issue.
 
 ## MVP Product Boundaries
